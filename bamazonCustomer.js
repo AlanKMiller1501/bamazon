@@ -50,3 +50,56 @@ function changeInventory(id, currentQuantity, addOrSubtract){
 		if(error){throw error};
 	})
 }
+
+//Purchases
+function purchase(){
+	setTimeout(function(){purchaseGo()}, 3000);
+	function purchaseGo(){
+	//Prompt for purchase
+		prompt.start();
+		console.log("To purchase a product, enter the ID number of the product, and quantity you would like to purchase.")
+		prompt.get(["ID", "Quantity"], function(error, results){
+			if(error){throw error};
+
+			var itemID = Number(results.ID);
+			var purchaseItem = db[itemID];
+			var totalPrice = purchaseItem.Price * results.Quantity;
+			var changeQuantity = results.Quantity * -1;
+
+		
+			if (purchaseItem.StockQuantity >= results.Quantity){
+				changeInventory(itemID, purchaseItem.StockQuantity, changeQuantity);
+
+				//Results of the transaction
+				console.log("Your purchase: " + purchaseItem.ProductName);
+				console.log("Quantity: " + results.Quantity);
+				console.log("Total price: $" + totalPrice);
+			}
+			else{console.log("Purchase error")};
+			morePlease();
+		});
+	}
+}
+
+function morePlease(){
+	var questions = [{
+	  	name: "again",
+	  	message: "Would you like to make another purchase?",
+	  	type: "confirm"
+	}]
+	inquirer.prompt(questions).then(function(answers){
+		if(answers.again){
+			displayAll();
+			purchase();
+		}
+		else{
+			console.log("Goodbye!");
+			return;
+		}
+	});
+}
+
+//****************
+console.log("Welcome to Bamazon.  Please peruse our inventory and pick out something you like:");
+displayAll();
+purchase();
