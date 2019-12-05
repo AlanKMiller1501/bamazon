@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS Bamazon;
 CREATE DATABASE Bamazon;
 
 USE Bamazon;
@@ -9,11 +10,11 @@ CREATE TABLE Products(
     DepartmentName VARCHAR(50),
     Price INTEGER(11),
     StockQuantity INTEGER(11)
-)
+);
 
 INSERT INTO Products (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
-("Playstation 4", "Electronics", 340, 10)
+("Playstation 4", "Electronics", 340, 10);
 
 INSERT INTO Products (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
