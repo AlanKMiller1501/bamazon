@@ -18,11 +18,11 @@ VALUES
 
 INSERT INTO Products (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
-("Macbook Air", "Electronics", 999, 7);
+("Kindle", "Electronics", 999, 7);
 
 INSERT INTO Products (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
-("Queer as Folk - The Complete First Season", "Video", 11.99, 10);
+("Robotech-Season One", "Video", 11.99, 10);
 
 INSERT INTO Products (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
@@ -30,7 +30,7 @@ VALUES
 
 INSERT INTO Products (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
-("Assorted Succulent Plants", "Lawn and Garden", 28.99, 9);
+("Carolina Reapers", "Lawn and Garden", 28.99, 9);
 
 INSERT INTO Products (ProductName, DepartmentName, Price, StockQuantity)
 VALUES
