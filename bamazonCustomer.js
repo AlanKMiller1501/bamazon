@@ -30,7 +30,7 @@ function displayAll(){
 			var price = value.Price;
 			var stock = value.StockQuantity;
 
-					//cli-table
+					
 					var newLine = {};
 					newLine[idNum] = [product, dept, price, stock];
 					db[idNum] = value;
@@ -55,7 +55,7 @@ function changeInventory(id, currentQuantity, addOrSubtract){
 function purchase(){
 	setTimeout(function(){purchaseGo()}, 3000);
 	function purchaseGo(){
-	//Prompt for purchase
+	//Prompt 
 		prompt.start();
 		console.log("To purchase a product, enter the ID number of the product, and quantity you would like to purchase.")
 		prompt.get(["ID", "Quantity"], function(error, results){
@@ -70,7 +70,7 @@ function purchase(){
 			if (purchaseItem.StockQuantity >= results.Quantity){
 				changeInventory(itemID, purchaseItem.StockQuantity, changeQuantity);
 
-				//Results of the transaction
+				//Results 
 				console.log("Your purchase: " + purchaseItem.ProductName);
 				console.log("Quantity: " + results.Quantity);
 				console.log("Total price: $" + totalPrice);
