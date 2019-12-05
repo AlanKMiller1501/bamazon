@@ -6,31 +6,35 @@ console.log(
   "Welcome to Bamazon.  Please peruse our inventory and pick out something you like:"
 );
 displayAll();
-// purchase();
 
-function displayAll() {
-  connection.query("SELECT * FROM Products", function(error, results) {
-     if (error) {
-       throw error;
-	 }
+function displayAll(){
+	db = {};
+	connection.query("SELECT * FROM Products", function(error, results){
+		if(error){throw error};
+		var inventory = new Table({ head: ["ID", "Product Name", "Department", "Price", "Quantity in stock"]});
+		results.forEach(function(value, index, array){
+
+   
+
+
 	 console.table(results);
-    // var inventory = new Table({
-    //   head: ["ID", "Product Name", "Department", "Price", "Quantity in stock"]
-    // });
-    // results.forEach(function(value, index, array) {
-    //   //Store each item
-    //   var idNum = value.id;
-    //   var product = value.ProductName;
-    //   var dept = value.DepartmentName;
-    //   var price = value.Price;
-    //   var stock = value.StockQuantity;
+    var inventory = new Table({
+      head: ["ID", "Product Name", "Department", "Price", "Quantity in stock"]
+    });
+    results.forEach(function(value, index, array) {
+     
+      var idNum = value.id;
+      var product = value.ProductName;
+      var dept = value.DepartmentName;
+      var price = value.Price;
+      var stock = value.StockQuantity;
 
-    //   var newLine = {};
-    //   newLine[idNum] = [product, dept, price, stock];
-    //   db[idNum] = value;
-    //   inventory.push(newLine);
-    // });
-    // console.log(inventory.toString());
+      var newLine = {};
+      newLine[idNum] = [product, dept, price, stock];
+      db[idNum] = value;
+      inventory.push(newLine);
+    });
+    console.log(inventory.toString());
   });
 }
 
